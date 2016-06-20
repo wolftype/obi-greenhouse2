@@ -5,4 +5,4 @@ node_modules/
 *.map
 .DS_Store
 /*.log
-ob-*-localhost.sh
+obi-*-localhost.sh

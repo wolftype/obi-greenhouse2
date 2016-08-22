@@ -82,6 +82,7 @@ else ()
   # Flags commonly used on Linux and Mac.  Adjust to taste.
   FOREACH(FLAG
         -fdiagnostics-show-option
+        -Qunused-arguments
         -Wall
         -Wempty-body
         -Werror
@@ -97,8 +98,9 @@ else ()
         -Wvla
         -Wwrite-strings
     )
-    CHECK_CXX_COMPILER_FLAG(${FLAG} COMPILER_SUPPORTS_${FLAG})
-    IF(COMPILER_SUPPORTS_${FLAG})
+    string(REGEX REPLACE "[^a-zA-Z0-9_]" _ SANITIZED_FLAG ${FLAG})
+    CHECK_CXX_COMPILER_FLAG(${FLAG} COMPILER_SUPPORTS_${SANITIZED_FLAG})
+    IF(COMPILER_SUPPORTS_${SANITIZED_FLAG})
       set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${FLAG}")
     ENDIF()
   ENDFOREACH()

@@ -4,9 +4,9 @@ An amazing greenhouse project.
 
 # The project.yaml file
 
-[project.yaml](project.yaml) contains all the information for building and running your greenhouse application.  This is where you can specify launch options such as command arguments, environment vars, etc.
+[project.yaml](project.yaml) contains all the information for building and running your greenhouse application, if you use `obi` as your project runner tool.  It lets you specify launch options such as command arguments, environment vars, etc.
 
-When running locally, obi uses information from the `localhost` room in [project.yaml](project.yaml). 
+When running on your own machine (`obi go`), obi uses information from the `localhost` room in [project.yaml](project.yaml). 
 
 
 ## Run locally
@@ -51,5 +51,5 @@ make -j8 -l8
 
 ### Run
 ```bash
-bin/{{project_name}} [(<screen.protein> <feld.protein>)]
+build/{{project_name}} [(<screen.protein> <feld.protein>)]
 ```

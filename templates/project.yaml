@@ -74,25 +74,24 @@ rooms:
   # your local machine.
   localhost:
     env-vars: {OB_SHARE_PATH: 'share/{{project_name}}:$OB_SHARE_PATH'}
-    pools: {wands-pool: 'wands'}
-    screen-protein: /etc/oblong/screen.protein
-    feld-protein: /etc/oblong/feld.protein
-    launch-args: []
+    launch-args: [
+      '/etc/oblong/screen.protein',
+      '/etc/oblong/feld.protein',
+    ]
 
   # Settings for another development environment. obi supports building and
   # launching on remote environments including any number of machines. You can
   # set those up here. The following is a theoretical setup that would build and
   # run across 3 machines, using the login 'my-user'. A pre-requisite to this
-  # would be to ensure you have ssh keys set up on each of the machines listed
-  # in 'hosts'.
+  # would be to ensure you have ssh keys set up for the specified 'user' on
+  # each of the machines listed in 'hosts'.
   my-room:
     env-vars: {DISPLAY: ':0', OB_SHARE_PATH: 'share/{{project_name}}:$OB_SHARE_PATH'}
     launch-args: [
       '--wands-pool=tcp://192.168.1.4/wands',
-      '--config=share/{{project_name}}/config.protein',
       '--room=/etc/oblong/room.protein',
-      /etc/oblong/room-screen.protein,
-      /etc/oblong/room-feld.protein
+      '/etc/oblong/room-screen.protein',
+      '/etc/oblong/room-feld.protein',
     ]
     user: my-user
     hosts: [192.168.1.1, 192.168.1.2, 192.168.1.3]

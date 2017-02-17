@@ -38,11 +38,13 @@ def get_cef_branch(g_speak_version):
     Look up which cef this g-speak's webthing depends on
     '''
     p = re.compile(r'cefbranch=(.*)')
-    with open("/opt/oblong/g-speak%s/lib/pkgconfig/libWebThing.pc" % g_speak_version, 'r') as f:
-        for line in f:
-            m = p.search(line)
-            if (m):
-                return m.group(1)
+    webthingpath = "/opt/oblong/g-speak%s/lib/pkgconfig/libWebThing.pc" % g_speak_version
+    if (os.path.exists(webthingpath)):
+        with open(webthingpath, 'r') as f:
+            for line in f:
+                m = p.search(line)
+                if (m):
+                    return m.group(1)
 
     # If webthing wasn't installed, fall back to asking obs
     # NOTE: if the following line fails, please install the Oblong obs package

@@ -75,8 +75,10 @@ rooms:
   localhost:
     env-vars: {OB_SHARE_PATH: 'share/{{project_name}}:$OB_SHARE_PATH'}
     launch-args: [
-      '/etc/oblong/screen.protein',
-      '/etc/oblong/feld.protein',
+      '--screen=/etc/oblong/screen.protein',
+      '--feld=/etc/oblong/feld.protein',
+      '/etc/oblong/screen.protein', # duplicated for backwards compatibility
+      '/etc/oblong/feld.protein', # duplicated for backwards compatibility
     ]
 
   # Settings for another development environment. obi supports building and
@@ -90,8 +92,10 @@ rooms:
     launch-args: [
       '--wands-pool=tcp://192.168.1.4/wands',
       '--room=/etc/oblong/room.protein',
-      '/etc/oblong/room-screen.protein',
-      '/etc/oblong/room-feld.protein',
+      '--screen=/etc/oblong/room-screen.protein',
+      '--feld=/etc/oblong/room-feld.protein',
+      '/etc/oblong/room-screen.protein', # duplicated for backwards compatibility
+      '/etc/oblong/room-feld.protein', # duplicated for backwards compatibility
     ]
     user: my-user
     hosts: [192.168.1.1, 192.168.1.2, 192.168.1.3]

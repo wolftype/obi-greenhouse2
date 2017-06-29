@@ -2,6 +2,7 @@
 Template for creating new greenhouse apps
 '''
 from __future__ import print_function
+from subprocess import call
 import errno
 import jinja2
 import os
@@ -89,4 +90,11 @@ def obi_new(**kwargs):
                 fil.write(template.render(kwargs))
         except jinja2.TemplateNotFound:
             print("Warning: Could not find template {0}".format(template_name))
+
+    # git init
+    os.chdir(project_path)
+    call(["git", "init"])
+    call(["git", "add", "--all"])
+    call(["git", "commit", "-m", "initial commit from obi template greenhouse"])
+    call(["git", "tag", "-am", "dev-0.1", "dev-0.1"])
     return 0

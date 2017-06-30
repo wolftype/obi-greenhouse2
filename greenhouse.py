@@ -45,7 +45,7 @@ def get_cef_branch(g_speak_version):
             for line in f:
                 m = p.search(line)
                 if (m):
-                    return m.group(1)
+                    return "cef" + m.group(1)
 
     # If webthing wasn't installed, fall back to asking obs
     # NOTE: if the following line fails, please install the Oblong obs package
@@ -64,17 +64,18 @@ def obi_new(**kwargs):
         [os.path.join("debian", "changelog"), "changelog"],
         [os.path.join("debian", "compat"), "compat"],
         [os.path.join("debian", "control"), "control"],
+        [os.path.join("debian", ".gitignore"), "debian.gitignore"],
+        [os.path.join("debian", 'oblong-' + kwargs['project_name'] + '-gs' + kwargs['g_speak_version'] + 'x1.install'), "install"],
         [".gitignore", "gitignore"],
         [os.path.join("src", "main.cpp"), "main.cpp"],
         ["{0}.sublime-project".format(project_name), "proj.sublime-project"],
         ["project.yaml", "project.yaml"],
         ["README.md", "README.md"],
         [os.path.join("debian", "rules"), "rules"],
-        ["set-gspeak.sh", "set-gspeak.sh"],
-        ["g-speak.dat", "g-speak.dat"],
-        ["set-version.sh", "set-version.sh"],
         ["three-feld.protein", "three-feld.protein"],
         ["three-screen.protein", "three-screen.protein"],
+        ["oblong.cmake", "oblong.cmake"],
+        ["baugen.sh", "baugen.sh"],
         ["CMakeLists.txt", "CMakeLists.txt"]])
     env = jinja2.Environment(loader=jinja2.PackageLoader(__name__),
                              keep_trailing_newline=True)
@@ -91,6 +92,8 @@ def obi_new(**kwargs):
         except jinja2.TemplateNotFound:
             print("Warning: Could not find template {0}".format(template_name))
 
+    os.chmod(project_path + '/baugen.sh', 0755)
+    os.chmod(project_path + '/debian/rules', 0755)
     # git init
     os.chdir(project_path)
     call(["git", "init"])

@@ -45,7 +45,7 @@ def get_cef_branch(g_speak_version):
             for line in f:
                 m = p.search(line)
                 if (m):
-                    return m.group(1)
+                    return "cef" + m.group(1)
 
     # If webthing wasn't installed, fall back to asking obs
     # NOTE: if the following line fails, please install the Oblong obs package

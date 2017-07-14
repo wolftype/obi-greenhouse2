@@ -71,6 +71,7 @@ def obi_new(**kwargs):
         ["{0}.sublime-project".format(project_name), "proj.sublime-project"],
         ["project.yaml", "project.yaml"],
         ["README.md", "README.md"],
+        ["CHANGELOG.md", "CHANGELOG.md"],
         [os.path.join("debian", "rules"), "rules"],
         ["three-feld.protein", "three-feld.protein"],
         ["three-screen.protein", "three-screen.protein"],

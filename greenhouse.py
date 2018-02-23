@@ -61,13 +61,14 @@ def obi_new(**kwargs):
 
     project_name = kwargs['project_name']
     pairs = list([
-        [os.path.join("debian", "changelog"), "changelog"],
-        [os.path.join("debian", "compat"), "compat"],
-        [os.path.join("debian", "control"), "control"],
-        [os.path.join("debian", ".gitignore"), "debian.gitignore"],
-        [os.path.join("debian", 'oblong-' + kwargs['project_name'] + '-gs' + kwargs['g_speak_version'] + 'x1.install'), "install"],
-        [".gitignore", "gitignore"],
-        [os.path.join("src", "main.cpp"), "main.cpp"],
+        [os.path.join("debian", "changelog"), os.path.join("debian","changelog")],
+        [os.path.join("debian", "compat"),    os.path.join("debian","compat")],
+        [os.path.join("debian", "control"),   os.path.join("debian","control")],
+        [os.path.join("debian", "rules"),     os.path.join("debian","rules")],
+        [os.path.join("debian", ".gitignore"),os.path.join("debian",".gitignore"))],
+        [os.path.join("src", "main.cpp"), os.path.join("src","main.cpp")],
+        [".gitignore", ".gitignore"],
+        [os.path.join("debian", 'oblong-' + kwargs['project_name'] + '-gs' + kwargs['g_speak_version'] + 'x1.install'), os.path.join("debian","install")],
         ["{0}.sublime-project".format(project_name), "proj.sublime-project"],
         ["project.yaml", "project.yaml"],
         ["README.md", "README.md"],

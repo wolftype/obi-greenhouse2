@@ -65,19 +65,16 @@ def obi_new(**kwargs):
         [os.path.join("debian", "compat"),    os.path.join("debian","compat")],
         [os.path.join("debian", "control"),   os.path.join("debian","control")],
         [os.path.join("debian", "rules"),     os.path.join("debian","rules")],
-        [os.path.join("debian", ".gitignore"),os.path.join("debian",".gitignore"))],
+        [os.path.join("debian", ".gitignore"),os.path.join("debian",".gitignore")],
         [os.path.join("src", "main.cpp"), os.path.join("src","main.cpp")],
         [".gitignore", ".gitignore"],
-        [os.path.join("debian", 'oblong-' + kwargs['project_name'] + '-gs' + kwargs['g_speak_version'] + 'x1.install'), os.path.join("debian","install")],
+        [os.path.join("debian", 'oblong-gs-' + kwargs['g_speak_version'] + kwargs['project_name'] + '.install'), os.path.join("debian","install")],
         ["{0}.sublime-project".format(project_name), "proj.sublime-project"],
         ["project.yaml", "project.yaml"],
         ["README.md", "README.md"],
         ["CHANGELOG.md", "CHANGELOG.md"],
-        [os.path.join("debian", "rules"), "rules"],
         ["three-feld.protein", "three-feld.protein"],
         ["three-screen.protein", "three-screen.protein"],
-        ["oblong.cmake", "oblong.cmake"],
-        ["baugen.sh", "baugen.sh"],
         ["CMakeLists.txt", "CMakeLists.txt"]])
     env = jinja2.Environment(loader=jinja2.PackageLoader(__name__),
                              keep_trailing_newline=True)
@@ -94,7 +91,6 @@ def obi_new(**kwargs):
         except jinja2.TemplateNotFound:
             print("Warning: Could not find template {0}".format(template_name))
 
-    os.chmod(project_path + '/baugen.sh', 0755)
     os.chmod(project_path + '/debian/rules', 0755)
     # git init
     os.chdir(project_path)

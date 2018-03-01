@@ -19,9 +19,9 @@ do_install_deps() {
   yoversion=$(bs_yovo2yoversion $gspeak)
   local gspeaksuffix
   gspeaksuffix="$(bs_short_pkg_suffix $gspeak)"  # from bau-defaults/buildshim-osx at moment
-  # If we use webthing, get cef version
-  local cefversion
-  cefversion=$(bs_get_cef_version)
+  # Uncomment to use webthing
+  #local cefversion
+  #cefversion=$(bs_get_cef_version)
 
   bs_install_xcode
 
@@ -29,8 +29,10 @@ do_install_deps() {
   bs_install \
     yobuild$yoversion \
     g-speak$gspeaksuffix \
-    oblong-webthing-${cefversion}-gs${gspeaksuffix}x \
-    oblong-yobuild${yoversion}-$cefversion \
+    oblong-greenhouse-gs${gspeaksuffix}x \
+    oblong-staging${gspeaksuffix} \
+    # Uncomment to use webthing
+    #oblong-yobuild${yoversion}-$cefversion \
+    #oblong-webthing-${cefversion}-gs${gspeaksuffix}x \
     #
 }
-

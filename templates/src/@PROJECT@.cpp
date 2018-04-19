@@ -2,9 +2,9 @@
 /* (c)  oblong industries */
 
 // Installed under {{g_speak_home}}
-#include "libGreenhouse/Greenhouse.h"
+#include "libGreenhouse2/Greenhouse.h"
 
-using namespace oblong::staging;
+using namespace oblong::staging2;
 
 
 /**
@@ -21,6 +21,6 @@ using namespace oblong::staging;
  */
 
 void Setup ()
-{ auto t = new Text ("Hello Greenhouse!");
-  t -> SlapOnFeld ();
+{ auto t = new GHText ("Hello Greenhouse2!");
+  SlapOnFeld (t);
 }

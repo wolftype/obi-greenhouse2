@@ -17,7 +17,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Get access to g-speak as well as its cmake options, helper functions,
 # and variables.  (See $G_SPEAK_HOME/src/FindOblong.cmake for what this does.)
-# 
+#
 # MAC OS NOTE:
 # If cmake aborts on the next line with the cmake error
 #   By not providing "FindOblong.cmake" in CMAKE_MODULE_PATH...
@@ -70,10 +70,10 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OPTIMIZE_FLAGS} ${ERROR_CXXFLAGS} ${SA
 # libraries this project uses.  Any pkg-config library can be named here.
 ObFindLibs(project ${OB_PREFER_LIB_TYPE}
   libAfferent
-  libGreenhouse
-  libNoodoo
-  libTwillig
-  # libWebThing  Uncomment to use WebThing
+  libGreenhouse2
+  libNoodoo2
+  libTwillig2
+  # libWebThing2  Uncomment to use WebThing
 )
 
 SET (project_source_files
